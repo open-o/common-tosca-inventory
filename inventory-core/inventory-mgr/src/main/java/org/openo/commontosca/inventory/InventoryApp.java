@@ -16,15 +16,26 @@
 
 package org.openo.commontosca.inventory;
 
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
+import io.dropwizard.db.DataSourceFactory;
+import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.server.SimpleServerFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.swagger.jaxrs.config.BeanConfig;
 import io.swagger.jaxrs.listing.ApiListingResource;
+
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
+import org.openo.commontosca.inventory.common.ServiceRegistrer;
+import org.openo.commontosca.inventory.dao.DaoManager;
+import org.openo.commontosca.inventory.entity.db.BaseData;
+import org.openo.commontosca.inventory.entity.db.ServiceBaseData;
+import org.openo.commontosca.inventory.entity.db.ServiceInputParamData;
+import org.openo.commontosca.inventory.entity.db.ServicePackageMappingData;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,14 +46,33 @@ public class InventoryApp extends Application<InventoryAppConfiguration> {
     new InventoryApp().run(args);
   }
 
+  private final HibernateBundle<InventoryAppConfiguration> bundle =
+      new HibernateBundle<InventoryAppConfiguration>(ServiceBaseData.class,
+          ServiceInputParamData.class, ServicePackageMappingData.class,BaseData.class) {
+        @Override
+        public DataSourceFactory getDataSourceFactory(InventoryAppConfiguration configuration) {
+          return configuration.getDataSourceFactory();
+        }
+      };
+
+  private void initDb(Bootstrap<InventoryAppConfiguration> bootstrap) {
+    bootstrap.addBundle(bundle);
+  }
+
   @Override
   public void initialize(Bootstrap<InventoryAppConfiguration> bootstrap) {
     bootstrap.addBundle(new AssetsBundle("/api-doc", "/api-doc", "index.html", "api-doc"));
+    initDb(bootstrap);
+  }
+
+  private void initDao() {
+    DaoManager.getInstance().setSessionFactory(bundle.getSessionFactory());
   }
 
   @Override
   public void run(InventoryAppConfiguration configuration, Environment environment) {
     LOGGER.info("Start to initialize inventory.");
+    initDao();
     environment.jersey().packages("org.openo.commontosca.inventory.resource");
     environment.jersey().register(MultiPartFeature.class);
     initSwaggerConfig(environment, configuration);
@@ -51,7 +81,9 @@ public class InventoryApp extends Application<InventoryAppConfiguration> {
   }
 
   private void initService() {
-    // TODO register to MSB
+    Thread registerInventoryService = new Thread(new ServiceRegistrer());
+    registerInventoryService.setName("register inventory service to Microservice Bus");
+    registerInventoryService.start();
   }
 
 

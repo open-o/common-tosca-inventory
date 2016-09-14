@@ -136,10 +136,6 @@
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-hibernate</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.dropwizard</groupId>
-            <artifactId>dropwizard-migrations</artifactId>
-        </dependency>
         <!-- swagger -->
         <dependency>
             <groupId>io.swagger</groupId>
@@ -150,33 +146,17 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-        <!-- jersey -->
-        <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-multipart</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.containers</groupId>
-            <artifactId>jersey-container-servlet-core</artifactId>
-        </dependency>
-        <!-- consumer -->
+          <!-- consumer -->
         <dependency>
             <groupId>com.eclipsesource.jaxrs</groupId>
             <artifactId>consumer</artifactId>
-        </dependency>
-        <!-- jackson -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-xml</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-        </dependency>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.eclipsesource.jaxrs</groupId>
+                    <artifactId>jersey-all</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>      
         <!-- gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -195,19 +175,7 @@
         <dependency>  
             <groupId>junit</groupId>
             <artifactId>junit</artifactId> 
-        </dependency> 
-        <dependency> 
-            <groupId>org.powermock</groupId> 
-            <artifactId>powermock-module-junit4</artifactId>
-        </dependency> 
-        <dependency> 
-            <groupId>org.powermock</groupId> 
-            <artifactId>powermock-api-mockito</artifactId>
-        </dependency> 
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-        </dependency>
+        </dependency>        
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
