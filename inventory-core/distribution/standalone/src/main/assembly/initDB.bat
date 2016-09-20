@@ -22,16 +22,29 @@ set password=%2
 set port=%3
 set host=%4
 echo start create inventory db
-echo HOME=$HOME
-cd /d %HOME%
-mysql -u%user% -p%password% -P%port% -h%host% < dbscripts\mysql\openo-common-res-createobj.sql
-mysql -u%user% -p%password% -P%port% -h%host% < dbscripts\mysql\openo-gso-lcm-createobj.sql
-mysql -u%user% -p%password% -P%port% -h%host% < dbscripts\mysql\openo-nfvo-res-createobj.sql
+echo HOME=%HOME%
+set sql_path=%HOME%\dbscripts\mysql
+mysql -u%user% -p%password% -P%port% -h%host% < %sql_path%\openo-common-res-createdb.sql
 set "dberr=%errorlevel%"
-
-if "%err%"=="0" (
-   echo create inventory db success
-  ) else (
-    echo failed create inventory db
-    pause
+if not "%dberr%"=="0" (  
+    goto error
   )
+@for /f "delims=" %%a in ('dir /b /a:-d "%sql_path%" ') do (  
+    echo %%a | find "createobj.sql" >nul
+    if %errorlevel%==0 (
+       echo "start create table:%%a"
+       mysql -u%user% -p%password% -P%port% -h%host% < %sql_path%\%%a
+       if not "%errorlevel%"=="0" (  
+         echo "failed create table:%%a"
+		 goto error   
+        )
+    )
+)
+:success
+echo init inventory database success!
+pause & exit
+:error
+echo init inventory database faild!
+pause & exit
+
+
