@@ -70,8 +70,8 @@ logging:
     - type: file
       threshold: INFO
       logFormat: "%d{yyyy-MM-dd HH:mm:ss SSS} %-5p [%c][%t] - %m%n"
-      currentLogFilename: ./logs/inventory.log
-      archivedLogFilenamePattern: ./logs/zip/inventory-%d{yyyy-MM-dd}.log.gz
+      currentLogFilename: ./works/logs/inventory.log
+      archivedLogFilenamePattern: ./works/logs/zip/inventory-%d{yyyy-MM-dd}.log.gz
       archivedFileCount: 7
       timeZone: UTC
 
