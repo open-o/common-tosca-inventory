@@ -47,7 +47,7 @@ public class ServiceInstanceHandler extends BaseHandler {
     HashMap<String, ServiceInstanceInfo> instancesMap = new HashMap<String, ServiceInstanceInfo>();
     StringBuffer serviceIds = new StringBuffer();
     Pager pager = queryServiceBaseInfo(condition);
-    if (pager.getList() == null) {
+    if (pager.getList() == null || pager.getList().size() <= 0) {
       LOGGER.warn("query serviceInstance by condition.size:0");
       return instances;
     }
@@ -116,25 +116,30 @@ public class ServiceInstanceHandler extends BaseHandler {
     queryStr.append(
         " from  gso_lcm_servicebaseinfo as s  left outer join gso_lcm_defPackage_mapping as  p"
             + " on s.serviceId=p.serviceId ");
-
-    if (InventoryDbUtil.isNotEmpty(condition.getServiceId())) {
-      queryStr.append(" where s.serviceId='" + condition.getServiceId() + "'");
-    }
     return queryStr;
   }
 
   private void initQueryFilter(ServiceInstanceQueryCondition condition, StringBuffer queryStr) {
     LOGGER.info("init query serviceBaseInfor SQL filter.");
     StringBuffer filterStr = new StringBuffer();
+    if (InventoryDbUtil.isNotEmpty(condition.getServiceId())) {
+      queryStr.append(" where s.serviceId='" + condition.getServiceId() + "'");
+    }
     Iterator<String> it = condition.getCondition().keySet().iterator();
     while (it.hasNext()) {
       String key = it.next();
       String value = condition.getCondition().get(key);
       filterStr.append(" and " + key);
-      filterStr.append(" = " + value);
+      filterStr.append(" = '" + value + "' ");
     }
     if (filterStr.length() > 0) {
-      queryStr.append(filterStr.toString());
+      if (!queryStr.toString().contains("where")) {
+        queryStr.append(" where ");
+        queryStr.append(
+            filterStr.toString().substring(filterStr.indexOf("and") + 3, filterStr.length()));
+      } else {
+        queryStr.append(filterStr.toString());
+      }
     }
     if (condition.getSort().size() <= 0) {
       Sort sort = new Sort();

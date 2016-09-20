@@ -18,7 +18,7 @@ package org.openo.commontosca.inventory.common;
 
 
 public enum InventoryResuorceType {
-  ServiceInstance, ServiceInputParam, EMS, VNFM, BASE;
+  ServiceInstance, ServiceInputParam;
 
   public static InventoryResuorceType getType(String type) {
     return valueOf(type);

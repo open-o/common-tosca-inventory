@@ -41,6 +41,7 @@
         <org.powermock.version>1.4.10</org.powermock.version>
         <org.mockito.version>1.9.5</org.mockito.version>
         <h2database.version>1.4.182</h2database.version>
+        <org.apache.ant.version>1.8.2</org.apache.ant.version>
     </properties>
 
     <dependencyManagement>
@@ -137,6 +138,11 @@
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
                 <version>${h2database.version}</version>
+            </dependency>
+             <dependency>
+                <groupId>org.apache.ant</groupId>
+                <artifactId>ant</artifactId>
+                <version>${org.apache.ant.version}</version>
             </dependency>
             <!-- UT end -->
         </dependencies>
