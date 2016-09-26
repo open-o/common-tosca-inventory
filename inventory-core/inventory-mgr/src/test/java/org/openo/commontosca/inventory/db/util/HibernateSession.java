@@ -39,7 +39,7 @@ public class HibernateSession {
     initConfigure();
     configuration = new Configuration().configure(cfgfile);
     configuration.setProperty("hibernate.connection.url",
-        "jdbc:h2:tcp://localhost:8205/" + resourcePath + "db/inventory");
+        "jdbc:h2:tcp://localhost:18209/" + resourcePath + "db/inventory");
     serviceRegistry =
         new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
     sessionFactory = configuration.buildSessionFactory(serviceRegistry);

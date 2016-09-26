@@ -44,7 +44,7 @@ public class H2DbServerUtil {
       SQLExec sqlExec = new SQLExec();
       // set db connetc parameter
       sqlExec.setDriver("org.h2.Driver");
-      sqlExec.setUrl("jdbc:h2:tcp://localhost:8205/" + resourcePath + "db/inventory");
+      sqlExec.setUrl("jdbc:h2:tcp://localhost:18209/" + resourcePath + "db/inventory");
       sqlExec.setUserid("inventory");
       sqlExec.setPassword("inventory");
 

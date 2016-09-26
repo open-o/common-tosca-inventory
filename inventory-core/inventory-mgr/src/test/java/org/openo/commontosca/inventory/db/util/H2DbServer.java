@@ -32,11 +32,11 @@ public class H2DbServer {
   public static void startUp() {
     try {
       h2DbWebServer =
-          Server.createWebServer(new String[] {"-web", "-webAllowOthers", "-webPort", "8206"});
+          Server.createWebServer(new String[] {"-web", "-webAllowOthers", "-webPort", "18210"});
       h2DbWebServer.start();
 
       h2DbTcpServer =
-          Server.createTcpServer(new String[] {"-tcp", "-tcpAllowOthers", "-tcpPort", "8205"});
+          Server.createTcpServer(new String[] {"-tcp", "-tcpAllowOthers", "-tcpPort", "18209"});
       h2DbTcpServer.start();
     } catch (SQLException error) {
       error.printStackTrace();
