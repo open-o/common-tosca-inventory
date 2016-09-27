@@ -1,6 +1,5 @@
 --
---
--- Copyright 2016 [ZTE] and others.
+-- Copyright 2016 ZTE Corporation.
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -14,6 +13,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 --
+
 DROP TABLE IF EXISTS gso_lcm_servicebaseinfo; 
 SET FOREIGN_KEY_CHECKS = 1;
 CREATE TABLE gso_lcm_servicebaseinfo ( 
