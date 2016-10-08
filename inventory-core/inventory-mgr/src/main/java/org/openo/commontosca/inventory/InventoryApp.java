@@ -28,6 +28,7 @@ import io.swagger.jaxrs.config.BeanConfig;
 import io.swagger.jaxrs.listing.ApiListingResource;
 
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
+import org.openo.commontosca.inventory.common.Config;
 import org.openo.commontosca.inventory.common.ServiceRegistrer;
 import org.openo.commontosca.inventory.dao.DaoManager;
 import org.openo.commontosca.inventory.entity.db.BaseData;
@@ -75,6 +76,7 @@ public class InventoryApp extends Application<InventoryAppConfiguration> {
     environment.jersey().packages("org.openo.commontosca.inventory.resource");
     environment.jersey().register(MultiPartFeature.class);
     initSwaggerConfig(environment, configuration);
+    Config.setConfigration(configuration);
     initService();
     LOGGER.info("Initialize inventory finished.");
   }
