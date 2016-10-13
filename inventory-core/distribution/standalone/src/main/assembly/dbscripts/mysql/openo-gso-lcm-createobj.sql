@@ -34,7 +34,7 @@ CREATE TABLE gso_lcm_defPackage_mapping (
     serviceId         VARCHAR(255)      NOT NULL, 
     serviceDefId      VARCHAR(255)      NOT NULL, 
     templateId        VARCHAR(255)      NOT NULL, 
-    templateName      VARCHAR(20)       NOT NULL,
+    templateName      VARCHAR(255)       NOT NULL,
 	CONSTRAINT gso_lcm_defPackage_mapping PRIMARY KEY(serviceId),
 	CONSTRAINT gso_lcm_defPackage_mapping FOREIGN KEY (serviceId) REFERENCES gso_lcm_servicebaseinfo (serviceId)
 ); 
