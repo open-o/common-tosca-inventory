@@ -67,9 +67,9 @@ public class DaoManager {
    * @return Returns the service dao.
    */
   public ServiceInstanceDao getServiceInstanceDao() {
-    if (serviceInstanceDao == null) {
+    //if (serviceInstanceDao == null) {
       serviceInstanceDao = new ServiceInstanceDao(sessionFactory);
-    }
+    //}
     return serviceInstanceDao;
   }
 
@@ -85,9 +85,9 @@ public class DaoManager {
    * @return Returns the service input param dao.
    */
   public ServiceInputParamDao getServiceInputParamDao() {
-    if (serviceInputParamDao == null) {
+    //if (serviceInputParamDao == null) {
       serviceInputParamDao = new ServiceInputParamDao(sessionFactory);
-    }
+   // }
     return this.serviceInputParamDao;
   }
 }
