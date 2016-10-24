@@ -77,7 +77,7 @@ public class ServiceInstanceManager {
     }
     if (instances == null || instances.size() <= 0) {
       LOGGER.warn("query service instances end.no match condition record");
-      return RestResponseUtil.getSuccessResponse(null);
+      return RestResponseUtil.getSuccessResponse(new ArrayList<ServiceInstanceInfo>());
     } else {
       LOGGER.error("query service instances end.size:" + instances.size());
       return RestResponseUtil.getSuccessResponse(instances);
