@@ -28,7 +28,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "gso_lcm_servicebaseinfo")
+@Table(name = "t_lcm_servicebaseinfo")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 @NoArgsConstructor

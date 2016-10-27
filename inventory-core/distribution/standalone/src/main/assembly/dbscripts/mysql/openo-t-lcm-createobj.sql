@@ -16,9 +16,9 @@
 
 use inventory; 
 SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS gso_lcm_servicebaseinfo; 
+DROP TABLE IF EXISTS t_lcm_servicebaseinfo; 
 SET FOREIGN_KEY_CHECKS = 1;
-CREATE TABLE gso_lcm_servicebaseinfo ( 
+CREATE TABLE t_lcm_servicebaseinfo ( 
     serviceId         VARCHAR(255)      NOT NULL, 
     serviceName       VARCHAR(255)      NOT NULL,
     serviceType       VARCHAR(20)       NOT NULL,
@@ -27,24 +27,24 @@ CREATE TABLE gso_lcm_servicebaseinfo (
     status            VARCHAR(20)       NOT NULL, 
     creator           VARCHAR(50)       NOT NULL,
     createTime       BIGINT            NOT NULL,
-    CONSTRAINT gso_lcm_servicebaseinfo PRIMARY KEY(serviceId)
+    CONSTRAINT t_lcm_servicebaseinfo PRIMARY KEY(serviceId)
 ); 
-DROP TABLE IF EXISTS gso_lcm_defPackage_mapping; 
-CREATE TABLE gso_lcm_defPackage_mapping ( 
+DROP TABLE IF EXISTS t_lcm_defPackage_mapping; 
+CREATE TABLE t_lcm_defPackage_mapping ( 
     serviceId         VARCHAR(255)      NOT NULL, 
     serviceDefId      VARCHAR(255)      NOT NULL, 
     templateId        VARCHAR(255)      NOT NULL, 
     templateName      VARCHAR(255)       NOT NULL,
-	CONSTRAINT gso_lcm_defPackage_mapping PRIMARY KEY(serviceId),
-	CONSTRAINT gso_lcm_defPackage_mapping FOREIGN KEY (serviceId) REFERENCES gso_lcm_servicebaseinfo (serviceId)
+	CONSTRAINT t_lcm_defPackage_mapping PRIMARY KEY(serviceId),
+	CONSTRAINT t_lcm_defPackage_mapping FOREIGN KEY (serviceId) REFERENCES t_lcm_servicebaseinfo (serviceId)
 ); 
-DROP TABLE IF EXISTS gso_lcm_inputParam_mapping; 
-CREATE TABLE gso_lcm_inputParam_mapping ( 
+DROP TABLE IF EXISTS t_lcm_inputParam_mapping; 
+CREATE TABLE t_lcm_inputParam_mapping ( 
     serviceId         VARCHAR(255)      NOT NULL, 
     inputKey          VARCHAR(255)      NOT NULL, 
     inputValue        VARCHAR(255)      NULL,
-	CONSTRAINT gso_lcm_inputParam_mapping PRIMARY KEY(serviceId,inputKey),
-	CONSTRAINT gso_lcm_inputParam_mapping FOREIGN KEY (serviceId) REFERENCES gso_lcm_servicebaseinfo (serviceId)
+	CONSTRAINT t_lcm_inputParam_mapping PRIMARY KEY(serviceId,inputKey),
+	CONSTRAINT t_lcm_inputParam_mapping FOREIGN KEY (serviceId) REFERENCES t_lcm_servicebaseinfo (serviceId)
 ); 
 
 

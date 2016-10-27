@@ -30,7 +30,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "gso_lcm_inputParam_mapping")
+@Table(name = "t_lcm_inputParam_mapping")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 @NoArgsConstructor
