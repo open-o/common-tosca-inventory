@@ -36,8 +36,8 @@ public class H2DbServerUtil {
     init();
     // execute sql
     ArrayList<String> sqlList = new ArrayList<String>();
-    // sqlList.add("openo-common-res-createobj.sql");
-    sqlList.add("openo-gso-lcm-createobj.sql");
+     //sqlList.add("openo-common-res-createdb.sql");
+     sqlList.add("openo-t-lcm-createobj.sql");
     sqlList.add("openo-nfvo-res-createobj.sql");
     for (int i = 0; i < sqlList.size(); i++) {
       SQLExec sqlExec = new SQLExec();
@@ -70,7 +70,7 @@ public class H2DbServerUtil {
    */
   public static void main(String[] args) {
     H2DbServer.startUp();
-    H2DbServerUtil.initTable();
+   // H2DbServerUtil.initTable();
     H2DbServer.shutDown();
   }
 

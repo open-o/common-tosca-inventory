@@ -113,7 +113,7 @@ public class ServiceInstanceHandler extends BaseHandler {
     queryStr.append("select s.serviceId,s.serviceName,s.serviceType,s.description,s.activeStatus,"
         + "s.status ,s.creator,s.createTime , p.serviceDefId,p.templateId," + "p.templateName ");
     queryStr.append(
-        " from  gso_lcm_servicebaseinfo as s  left outer join gso_lcm_defPackage_mapping as  p"
+        " from  t_lcm_servicebaseinfo as s  left outer join t_lcm_defPackage_mapping as  p"
             + " on s.serviceId=p.serviceId ");
     return queryStr;
   }

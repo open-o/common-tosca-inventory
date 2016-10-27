@@ -27,7 +27,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "gso_lcm_defPackage_mapping")
+@Table(name = "t_lcm_defPackage_mapping")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 @NoArgsConstructor
