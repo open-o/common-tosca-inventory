@@ -62,7 +62,7 @@ public class ServiceInstanceHandler extends BaseHandler {
             ServiceBaseData base = (ServiceBaseData) objs[j];
             instance.setInstanceBaseInfor(base);
             instancesMap.put(instance.getServiceId(), instance);
-            serviceIds.append(instance.getServiceId() + ",");
+            serviceIds.append("'"+instance.getServiceId() + "',");
             instances.add(instance);
           } else if (objs[j] instanceof ServicePackageMappingData) {
             ServicePackageMappingData packageMapping = (ServicePackageMappingData) objs[j];
