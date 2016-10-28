@@ -32,7 +32,9 @@ public class InventoryAppConfiguration extends Configuration {
 
   @NotEmpty
   private String msbServerAddr;
-
+  @Valid
+  private String serviceIp;
+  
   @Valid
   @NotNull
   private DataSourceFactory database = new DataSourceFactory();
@@ -75,5 +77,15 @@ public class InventoryAppConfiguration extends Configuration {
   @JsonProperty
   public void setMsbServerAddr(String msbServerAddr) {
     this.msbServerAddr = msbServerAddr;
+  }
+  
+  @JsonProperty
+  public String getServiceIp() {
+    return serviceIp;
+  }
+
+  @JsonProperty
+  public void setServiceIp(String serviceIp) {
+    this.serviceIp = serviceIp;
   }
 }

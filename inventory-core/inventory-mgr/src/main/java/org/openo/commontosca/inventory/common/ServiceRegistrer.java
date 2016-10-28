@@ -15,6 +15,7 @@
  */
 package org.openo.commontosca.inventory.common;
 
+import org.openo.commontosca.inventory.common.Config;
 import org.openo.commontosca.inventory.externalservice.entity.ServiceRegisterEntity;
 import org.openo.commontosca.inventory.externalservice.msb.MicroserviceBusConsumer;
 import org.slf4j.Logger;
@@ -68,8 +69,8 @@ public class ServiceRegistrer implements Runnable {
     inventoryEntity.setServiceName("inventory");
     inventoryEntity.setProtocol("REST");
     inventoryEntity.setVersion("v1");
-    inventoryEntity.setUrl("/openoapi/inventory/v1");
-    inventoryEntity.setSingleNode(null, "8203", 0);
+    inventoryEntity.setUrl("/openoapi/inventory/v1");   
+    inventoryEntity.setSingleNode(Config.getConfigration().getServiceIp(), "8203", 0);
     inventoryEntity.setVisualRange("1");
   }
 }
