@@ -20,7 +20,7 @@
     <parent>
         <groupId>org.openo.common-tosca.inventory</groupId>
         <artifactId>inventoryparent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.1-SNAPSHOT</version>
         <relativePath>inventory-parent/inventoryparent</relativePath>
     </parent>  
 
