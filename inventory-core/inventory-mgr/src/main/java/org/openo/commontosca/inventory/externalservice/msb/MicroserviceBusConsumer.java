@@ -13,14 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.openo.commontosca.inventory.externalservice.msb;
 
 import com.eclipsesource.jaxrs.consumer.ConsumerFactory;
 
 import org.glassfish.jersey.client.ClientConfig;
-import org.openo.commontosca.inventory.util.InventoryDbUtil;
 import org.openo.commontosca.inventory.common.Config;
 import org.openo.commontosca.inventory.externalservice.entity.ServiceRegisterEntity;
+import org.openo.commontosca.inventory.util.InventoryDbUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -13,17 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.openo.commontosca.inventory.db.util;
-
-
-
-import java.io.File;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
 
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.taskdefs.SQLExec;
 import org.apache.tools.ant.types.EnumeratedAttribute;
+
+import java.io.File;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 
 public class H2DbServerUtil {
@@ -36,8 +35,8 @@ public class H2DbServerUtil {
     init();
     // execute sql
     ArrayList<String> sqlList = new ArrayList<String>();
-     //sqlList.add("openo-common-res-createdb.sql");
-     sqlList.add("openo-t-lcm-createobj.sql");
+    //sqlList.add("openo-common-res-createdb.sql");
+    sqlList.add("openo-t-lcm-createobj.sql");
     sqlList.add("openo-nfvo-res-createobj.sql");
     for (int i = 0; i < sqlList.size(); i++) {
       SQLExec sqlExec = new SQLExec();
@@ -70,7 +69,7 @@ public class H2DbServerUtil {
    */
   public static void main(String[] args) {
     H2DbServer.startUp();
-   // H2DbServerUtil.initTable();
+    // H2DbServerUtil.initTable();
     H2DbServer.shutDown();
   }
 

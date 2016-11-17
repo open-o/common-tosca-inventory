@@ -13,10 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.openo.commontosca.inventory.dao;
 
 import org.hibernate.SessionFactory;
 import org.openo.commontosca.inventory.common.InventoryResuorceType;
+import org.openo.commontosca.inventory.exception.InventoryException;
 
 /**
  * DAO manager class.<br>
@@ -43,7 +45,10 @@ public class DaoManager {
    * @param type resource Type
    * @return DAO
    */
-  public BaseDao<?> getDao(String type) {
+  public BaseDao<?> getDao(String type) throws InventoryException {
+    if (sessionFactory == null) {
+      throw new InventoryException("", "errorMsg:database connect init faild!");
+    }
     switch (InventoryResuorceType.getType(type)) {
       case ServiceInstance:
         return getServiceInstanceDao();
@@ -51,7 +56,6 @@ public class DaoManager {
         return getServiceInputParamDao();
       default:
         return null;
-
     }
   }
 
@@ -67,9 +71,9 @@ public class DaoManager {
    * @return Returns the service dao.
    */
   public ServiceInstanceDao getServiceInstanceDao() {
-    //if (serviceInstanceDao == null) {
-      serviceInstanceDao = new ServiceInstanceDao(sessionFactory);
-    //}
+    // if (serviceInstanceDao == null) {
+    serviceInstanceDao = new ServiceInstanceDao(sessionFactory);
+    // }
     return serviceInstanceDao;
   }
 
@@ -85,9 +89,9 @@ public class DaoManager {
    * @return Returns the service input param dao.
    */
   public ServiceInputParamDao getServiceInputParamDao() {
-    //if (serviceInputParamDao == null) {
-      serviceInputParamDao = new ServiceInputParamDao(sessionFactory);
-   // }
+    // if (serviceInputParamDao == null) {
+    serviceInputParamDao = new ServiceInputParamDao(sessionFactory);
+    // }
     return this.serviceInputParamDao;
   }
 }

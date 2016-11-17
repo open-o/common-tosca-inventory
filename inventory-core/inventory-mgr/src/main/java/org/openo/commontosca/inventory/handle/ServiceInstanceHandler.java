@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.openo.commontosca.inventory.handle;
 
 import org.openo.commontosca.inventory.common.InventoryResuorceType;
@@ -62,7 +63,7 @@ public class ServiceInstanceHandler extends BaseHandler {
             ServiceBaseData base = (ServiceBaseData) objs[j];
             instance.setInstanceBaseInfor(base);
             instancesMap.put(instance.getServiceId(), instance);
-            serviceIds.append("'"+instance.getServiceId() + "',");
+            serviceIds.append("'" + instance.getServiceId() + "',");
             instances.add(instance);
           } else if (objs[j] instanceof ServicePackageMappingData) {
             ServicePackageMappingData packageMapping = (ServicePackageMappingData) objs[j];
@@ -112,8 +113,8 @@ public class ServiceInstanceHandler extends BaseHandler {
     StringBuffer queryStr = new StringBuffer();
     queryStr.append("select s.serviceId,s.serviceName,s.serviceType,s.description,s.activeStatus,"
         + "s.status ,s.creator,s.createTime , p.serviceDefId,p.templateId," + "p.templateName ");
-    queryStr.append(
-        " from  t_lcm_servicebaseinfo as s  left outer join t_lcm_defPackage_mapping as  p"
+    queryStr
+        .append(" from  t_lcm_servicebaseinfo as s  left outer join t_lcm_defPackage_mapping as  p"
             + " on s.serviceId=p.serviceId ");
     return queryStr;
   }

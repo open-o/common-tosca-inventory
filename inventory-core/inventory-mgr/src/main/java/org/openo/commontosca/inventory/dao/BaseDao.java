@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.openo.commontosca.inventory.dao;
 
 import io.dropwizard.hibernate.AbstractDAO;
@@ -29,7 +30,6 @@ import org.openo.commontosca.inventory.common.Pager;
 import org.openo.commontosca.inventory.exception.InventoryException;
 import org.openo.commontosca.inventory.util.HqlFactory;
 
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;

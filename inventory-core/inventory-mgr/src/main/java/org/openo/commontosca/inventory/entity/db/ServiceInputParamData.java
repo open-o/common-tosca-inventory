@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.openo.commontosca.inventory.entity.db;
 
 
@@ -36,6 +37,8 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ServiceInputParamData extends BaseData implements Serializable {
+ 
+  private static final long serialVersionUID = -6022443360895434708L;
   @Id
   @Column(name = "serviceId")
   private String serviceId;
