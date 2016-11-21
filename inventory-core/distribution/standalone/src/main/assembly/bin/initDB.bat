@@ -22,7 +22,7 @@ set port=%3
 set host=%4
 echo start create inventory db
 echo HOME=%HOME%
-set sql_path=%HOME%\dbscripts\mysql
+set sql_path=%HOME%..\\dbscripts\mysql
 mysql -u%user% -p%password% -P%port% -h%host% < %sql_path%\openo-common-res-createdb.sql
 set "dberr=%errorlevel%"
 if not "%dberr%"=="0" (  

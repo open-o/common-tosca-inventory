@@ -17,18 +17,18 @@
 DIRNAME=`dirname $0`
 RUNHOME=`cd $DIRNAME/; pwd`
 echo @RUNHOME@ $RUNHOME
-
 echo @JAVA_HOME@ $JAVA_HOME
 JAVA="$JAVA_HOME/bin/java"
 echo @JAVA@ $JAVA
-
+main_path=$RUNHOME/../
+cd $main_path
 JAVA_OPTS="-Xms50m -Xmx128m"
 port=8312
 #JAVA_OPTS="$JAVA_OPTS -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=$port,server=y,suspend=n"
 echo @JAVA_OPTS@ $JAVA_OPTS
 
-class_path="$RUNHOME/:$RUNHOME/inventory-service.jar"
+class_path="$main_path/:$main_path/inventory-service.jar"
 echo @class_path@ $class_path
 
-"$JAVA" $JAVA_OPTS -classpath "$class_path" org.openo.commontosca.inventory.InventoryApp server "$RUNHOME/conf/inventory.yml"
+"$JAVA" $JAVA_OPTS -classpath "$class_path" org.openo.commontosca.inventory.InventoryApp server "$main_path/conf/inventory.yml"
 

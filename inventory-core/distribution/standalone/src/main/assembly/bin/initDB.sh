@@ -22,21 +22,22 @@ password=$2
 port=$3
 host=$4
 echo "start create inventory db"
-mysql -u$user -p$password -P$port -h$host <$HOME/dbscripts/mysql/openo-common-res-createdb.sql
+sql_path=$HOME/../
+mysql -u$user -p$password -P$port -h$host <$sql_path/dbscripts/mysql/openo-common-res-createdb.sql
 sql_result=$?
 if [ $sql_result != 0 ] ; then
     echo "failed to create inventory database"
     exit 1
 fi
 fileFlag=*createobj.sql
-location=$HOME/dbscripts/mysql
+location=$sql_path/dbscripts/mysql
 fileName=""
 for i in `ls $location`
 do
     if [[ $i == ${fileFlag} ]];then
         fileName=${i};
         echo "start create table:${fileName}"
-        mysql -u$user -p$password -P$port -h$host <$HOME/dbscripts/mysql/$fileName
+        mysql -u$user -p$password -P$port -h$host <$sql_path/dbscripts/mysql/$fileName
         sql_result=$?
         if [ $sql_result != 0 ] ; then
           echo "failed to init inventory table:${fileName}"
