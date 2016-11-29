@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>inventory-root</artifactId>
-    <name>openo/commontosca/inventory/inventory-root</name>
+    <name>common-tosca-inventory</name>
     <packaging>pom</packaging>
 
     <modules>

@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>inventoryparent</artifactId>
-    <name>openo/commontosca/inventory/inventoryparent</name>
+    <name>common-tosca-inventory/inventory-parent/inventoryparent</name>
     <packaging>pom</packaging>
 
     <properties>

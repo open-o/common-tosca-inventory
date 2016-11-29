@@ -25,7 +25,7 @@
     
     <modelVersion>4.0.0</modelVersion>
     <artifactId>standalone</artifactId>
-    <name>openo/commontosca/inventory/distribution/standalone</name>
+    <name>common-tosca-inventory/inventory-core/distribution/standalone</name>
     <packaging>pom</packaging>
 
     <properties>

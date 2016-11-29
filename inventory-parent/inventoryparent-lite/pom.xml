@@ -27,7 +27,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.openo.common-tosca.inventory</groupId>
     <artifactId>inventoryparent-lite</artifactId>
-    <name>openo/commontosca/inventory/inventoryparent-lite</name>
+    <name>common-tosca-inventory/inventory-parent/inventoryparent-lite</name>
     <packaging>pom</packaging>
 
     <build>

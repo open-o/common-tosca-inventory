@@ -27,7 +27,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.openo.common-tosca.inventory</groupId>
     <artifactId>inventoryparent-aggregator</artifactId>
-    <name>openo/commontosca/inventory/inventoryparent-aggregator</name>
+    <name>common-tosca-inventory/inventory-parent</name>
     <packaging>pom</packaging>
 
     <modules>

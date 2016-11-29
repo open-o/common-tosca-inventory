@@ -25,7 +25,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>inventory-core-parent</artifactId>
-    <name>openo/commontosca/inventory/inventory-core-parent</name>
+    <name>common-tosca-inventory/inventory-core</name>
     <packaging>pom</packaging>
 
     <modules>

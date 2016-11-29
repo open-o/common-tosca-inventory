@@ -25,7 +25,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>inventory-mgr</artifactId>
-    <name>openo/commontosca/inventory/inventory-mgr</name>
+    <name>common-tosca-inventory/inventory-core/inventory-mgr</name>
     <packaging>jar</packaging>
 
     <build>
