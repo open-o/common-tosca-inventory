@@ -1,5 +1,5 @@
 --
--- Copyright 2016 ZTE Corporation.
+-- Copyright 2016-2017 ZTE Corporation.
 --
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -42,7 +42,7 @@ DROP TABLE IF EXISTS t_lcm_inputParam_mapping;
 CREATE TABLE t_lcm_inputParam_mapping ( 
     serviceId         VARCHAR(255)      NOT NULL, 
     inputKey          VARCHAR(255)      NOT NULL, 
-    inputValue        VARCHAR(255)      NULL,
+    inputValue        mediumtext      NULL,
 	CONSTRAINT t_lcm_inputParam_mapping PRIMARY KEY(serviceId,inputKey),
 	CONSTRAINT t_lcm_inputParam_mapping FOREIGN KEY (serviceId) REFERENCES t_lcm_servicebaseinfo (serviceId)
 ); 
