@@ -1,7 +1,6 @@
-<?xml version="1.0"?>
 <!--
 
-    Copyright 2016 ZTE Corporation.
+    Copyright  2017 ZTE Corporation.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -17,19 +16,58 @@
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <groupId>org.openo.common-tosca.inventory</groupId>
-        <artifactId>inventory-root</artifactId>
-        <version>1.1.0-SNAPSHOT</version>
-    </parent>
-
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>inventory-core-parent</artifactId>
-    <name>common-tosca-inventory/inventory-core</name>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>inventory-mgr</module>
-        <module>distribution</module>
-    </modules>
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.openo.common-tosca.inventory</groupId>
+		<artifactId>common-tosca-inventory</artifactId>
+		<version>1.1.0-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+	<artifactId>inventory-core</artifactId>
+	<dependencies>
+		<dependency>
+			<groupId>org.openo.common-tosca.inventory</groupId>
+			<artifactId>inventory-sdk-support</artifactId>
+			<version>1.1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongodb-driver-async</artifactId>
+			<version>3.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-transport</artifactId>
+			<version>4.1.4.Final</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.14</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-csv</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cloud-connectors</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cloud-connectors</artifactId>
+		</dependency>
+	</dependencies>
+	<description>Implement the core functionality of the Inventory while providing REST access and the Local implementation of the SDK.</description>
 </project>

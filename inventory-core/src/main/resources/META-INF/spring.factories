@@ -1,0 +1,2 @@
+org.springframework.context.ApplicationContextInitializer=\
+org.openo.commontosca.inventory.core.context.InventoryApplicationContextInitializer

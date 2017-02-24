@@ -23,7 +23,6 @@
         <version>1.1.0-SNAPSHOT</version>
         <relativePath>../inventoryparent-lite</relativePath>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
     <artifactId>inventoryparent</artifactId>
     <name>common-tosca-inventory/inventory-parent/inventoryparent</name>
