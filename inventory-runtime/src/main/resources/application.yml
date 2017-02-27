@@ -41,6 +41,7 @@ management:
 server:
   server-header: Inventory Server
   context-path: /inventory
+  port:  8203 
   session:
     cookie:
       http-only: true

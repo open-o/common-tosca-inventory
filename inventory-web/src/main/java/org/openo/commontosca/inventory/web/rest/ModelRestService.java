@@ -37,7 +37,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter
 @RestController
 @RequestMapping("/openoapi/inventory/v1/model")
 public class ModelRestService {
-
+ 
   @RequestMapping(method = RequestMethod.POST)
   public DeferredResult<ValueMap> addModel(@RequestBody Map<String, Object> paramMap) {
     DeferredResult<ValueMap> deferredResult = new DeferredResult<ValueMap>();

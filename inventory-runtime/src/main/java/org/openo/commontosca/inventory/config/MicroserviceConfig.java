@@ -26,11 +26,11 @@ public class MicroserviceConfig {
   }
 
   public static String getMsbServerAddr() {
-    return getProperty("msbServerAddr");
+    return getProperty("MSB_ADDR");
   }
 
   public static String getServiceIp() {
-    return getProperty("serviceIp");
+    return getProperty("SERVICE_IP");
   }
 
 

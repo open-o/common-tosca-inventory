@@ -14,4 +14,17 @@
 # limitations under the License.
 #
 
-distributionUrl=http://10.74.156.84:8081/nexus/content/groups/public/com/zte/ums/u32/cmdb/apache-maven/3.3.9/apache-maven-3.3.9-bin.zip
+DIRNAME=`dirname $0`
+RUNHOME=`cd $DIRNAME/; pwd`
+echo @RUNHOME@ $RUNHOME
+echo @JAVA_HOME@ $JAVA_HOME
+JAVA="$JAVA_HOME/bin/java"
+echo @JAVA@ $JAVA
+main_path=$RUNHOME/../
+cd $main_path/war
+#JAVA_OPTS="-Xms50m -Xmx128m"
+#port=8312
+#JAVA_OPTS="$JAVA_OPTS -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=$port,server=y,suspend=n"
+echo @JAVA_OPTS@ $JAVA_OPTS
+"$JAVA" $JAVA_OPTS  -cp . org.springframework.boot.loader.WarLauncher
+

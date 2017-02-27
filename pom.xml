@@ -180,7 +180,8 @@
 		<module>inventory-sdk</module>
 		<module>inventory-core</module>
 		<module>inventory-web</module>
-		<module>inventory-runtime</module>
 		<module>inventory-mgr</module>
+		<module>inventory-runtime</module>
+		<module>inventory-standalone</module>
 	</modules>
 </project>
