@@ -22,7 +22,7 @@ password=$2
 port=$3
 host=$4
 echo "start create inventory db"
-sql_path=$HOME/../
+sql_path=$HOME
 mysql -u$user -p$password -P$port -h$host <$sql_path/dbscripts/mysql/openo-common-res-createdb.sql
 sql_result=$?
 if [ $sql_result != 0 ] ; then
