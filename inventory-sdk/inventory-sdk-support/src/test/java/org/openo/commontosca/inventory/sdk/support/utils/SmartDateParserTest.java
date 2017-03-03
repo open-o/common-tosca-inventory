@@ -15,12 +15,9 @@
  */
 package org.openo.commontosca.inventory.sdk.support.utils;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
 import org.junit.Assert;
 import org.junit.Test;
-import org.mockito.internal.matchers.LessOrEqual;
 import org.openo.commontosca.inventory.sdk.support.utils.SmartDateParser;
 
 public class SmartDateParserTest {
@@ -45,25 +42,6 @@ public class SmartDateParserTest {
         format.format(parser.parse("2016-01-01 12:12:12.123")));
     Assert.assertEquals("2016-01-01 12:12:12.000",
         format.format(parser.parse("2016-01-01T12:12:12")));
-  }
-
-  @Test
-  public void testPerformance() throws ParseException {
-    SmartDateParser smartParser = new SmartDateParser();
-    long start = System.currentTimeMillis();
-    int count = 100000;
-    for (int i = 0; i < count; i++) {
-      smartParser.parse("2016/01/01 12:12:12");
-    }
-    long time1 = System.currentTimeMillis() - start;
-    SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    start = System.currentTimeMillis();
-    for (int i = 0; i < count; i++) {
-      simpleFormat.parse("2016-01-01 12:12:12");
-    }
-    long time2 = System.currentTimeMillis() - start;
-    Assert.assertThat("Performance query should be within 5 times", time1 / (float) time2,
-        new LessOrEqual<Float>(5F));
   }
 
 }

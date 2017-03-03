@@ -16,13 +16,14 @@
 package org.openo.commontosca.inventory.mgr;
 
 public class DBConfig {
-  private static String dbUrl = "jdbc:mysql://127.0.0.1:3306/inventory";
+  private static String dbUrl;
   private static String dbUserName;
   private static String dbPassword;
   private static String defaultName = "OPENO-Inventory";
-
+  private static String port;
   static {
     dbUrl = getProperty("url");
+    port = getProperty("port");
     dbUserName = getProperty("user");
     dbPassword = getProperty("password");
   }
@@ -65,6 +66,10 @@ public class DBConfig {
 
   public static void setDefaultName(String defaultName) {
     DBConfig.defaultName = defaultName;
+  }
+
+  public static String getPort() {
+    return port;
   }
 
 

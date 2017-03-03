@@ -21,6 +21,12 @@ title inventory-service
 echo ### Starting inventory-service
 
 set JAVA="%JAVA_HOME%\bin\java"
+set jvm_opts=%jvm_opts% -Duser=root
+set jvm_opts=%jvm_opts% -Dpassword=root123
+set jvm_opts=%jvm_opts% -Dport=3306
+set jvm_opts=%jvm_opts% -Durl=jdbc:mysql://127.0.0.1:3306/inventory
+
+
 rem set jvm_opts=-Xms50m -Xmx128m
 rem set jvm_opts=%jvm_opts% -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=%port%,server=y,suspend=n
 echo ### jvm_opts: %jvm_opts%
