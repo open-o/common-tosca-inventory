@@ -22,7 +22,7 @@ JAVA="$JAVA_HOME/bin/java"
 echo @JAVA@ $JAVA
 main_path=$RUNHOME
 cd $main_path/war
-JAVA_OPTS="-Duser=root -Dpassword=rootpass -Dport=3306 -Durl=jdbc:mysql://127.0.0.1:3306/inventory"
+JAVA_OPTS="-Duser=root -Dpassword=rootpass  -Durl=jdbc:mysql://127.0.0.1:3306/inventory"
 
 #JAVA_OPTS="-Xms50m -Xmx128m"
 #port=8312

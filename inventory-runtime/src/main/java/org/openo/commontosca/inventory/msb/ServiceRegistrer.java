@@ -39,7 +39,7 @@ public class ServiceRegistrer implements Runnable {
       LOG.info("inventory microservice register.retry:" + retry);
       retry++;
       flag = MicroserviceBusConsumer.registerService(inventoryEntity);
-      if (flag == false) {
+      if (!flag) {
         LOG.warn("microservice register failed, sleep 30S and try again.");
         threadSleep(30000);
       } else {

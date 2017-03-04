@@ -52,8 +52,10 @@ public class MicroserviceBusConsumer {
       restTemplate.setUriTemplateHandler(uriTemplateHandler);
       MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
       headers.add("Accept", "*/*");
+      String url="http://"+MicroserviceConfig.getMsbServerAddr()+":"+MicroserviceConfig.getServiceIp()+"/openoapi/microservices/v1/services?createOrUpdate=false";
+      LOG.info("microservice url:"+url);
       HttpEntity<Map> requestEntity =
-          restTemplate.exchange(MicroserviceConfig.getMsbServerAddr()+":"+MicroserviceConfig.getServiceIp()+"/openoapi/microservices/v1/services?createOrUpdate=false",
+          restTemplate.exchange(url,
               HttpMethod.POST, new HttpEntity<ServiceRegisterEntity>(entity, headers), Map.class);
       LOG.info(requestEntity.getBody().toString());
       return true;
