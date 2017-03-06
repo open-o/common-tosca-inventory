@@ -18,6 +18,7 @@ package org.openo.commontosca.inventory.msb;
 import org.openo.commontosca.inventory.config.MicroserviceConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * register service to microservice bus
@@ -25,6 +26,8 @@ import org.slf4j.LoggerFactory;
 public class ServiceRegistrer implements Runnable {
   private final ServiceRegisterEntity inventoryEntity = new ServiceRegisterEntity();
   private static final Logger LOG = LoggerFactory.getLogger(ServiceRegistrer.class);
+  @Autowired
+  MicroserviceBusConsumer microserviceBusConsumer;
 
   public ServiceRegistrer() {
     initServiceEntity();
@@ -35,10 +38,10 @@ public class ServiceRegistrer implements Runnable {
     LOG.info("start inventory microservice register");
     boolean flag = false;
     int retry = 0;
-    while (!flag && retry < 1000) {
+    while (!flag && retry < 20) {
       LOG.info("inventory microservice register.retry:" + retry);
       retry++;
-      flag = MicroserviceBusConsumer.registerService(inventoryEntity);
+      flag = microserviceBusConsumer.registerService(inventoryEntity);
       if (!flag) {
         LOG.warn("microservice register failed, sleep 30S and try again.");
         threadSleep(30000);

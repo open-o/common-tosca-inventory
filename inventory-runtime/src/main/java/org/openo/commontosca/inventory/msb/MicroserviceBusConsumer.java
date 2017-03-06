@@ -17,47 +17,33 @@ package org.openo.commontosca.inventory.msb;
 
 import java.util.Map;
 
-import org.apache.http.impl.client.BasicCredentialsProvider;
-import org.apache.http.impl.client.HttpClients;
 import org.openo.commontosca.inventory.config.MicroserviceConfig;
 import org.openo.commontosca.inventory.sdk.support.utils.GsonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.DefaultUriTemplateHandler;
 
 
-
+@Component
 public class MicroserviceBusConsumer {
   private static final Logger LOG = LoggerFactory.getLogger(MicroserviceBusConsumer.class);
+  @Autowired
+  RestTemplate restTemplate;
 
   /**
    * @param entity service entity
    * @return register service to msb success return true, else return false.
    */
-  public static boolean registerService(ServiceRegisterEntity entity) {
+  public boolean registerService(ServiceRegisterEntity entity) {
     LOG.info("microservice register body:" + GsonUtils.toJson(entity));
     try {
-
-      RestTemplate restTemplate = new RestTemplate(
-          new HttpComponentsClientHttpRequestFactory(HttpClients.custom().useSystemProperties()
-              .setDefaultCredentialsProvider(new BasicCredentialsProvider()).build()));
-      DefaultUriTemplateHandler uriTemplateHandler = new DefaultUriTemplateHandler();
-      uriTemplateHandler.setBaseUrl(MicroserviceConfig.getMsbServerAddr());
-      restTemplate.setUriTemplateHandler(uriTemplateHandler);
-      MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
-      headers.add("Accept", "*/*");
-      String url="http://"+MicroserviceConfig.getMsbServerAddr()+":"+MicroserviceConfig.getServiceIp()+"/openoapi/microservices/v1/services?createOrUpdate=false";
-      LOG.info("microservice url:"+url);
-      HttpEntity<Map> requestEntity =
-          restTemplate.exchange(url,
-              HttpMethod.POST, new HttpEntity<ServiceRegisterEntity>(entity, headers), Map.class);
-      LOG.info(requestEntity.getBody().toString());
+      LOG.info(restTemplate
+          .postForObject("http://" + MicroserviceConfig.getMsbServerAddr() + ":"
+              + MicroserviceConfig.getServiceIp()
+              + "/openoapi/microservices/v1/services?createOrUpdate=false", entity, Map.class)
+          .toString());
       return true;
     } catch (Exception e) {
       LOG.error("microservice register failed!" + e.getMessage());
