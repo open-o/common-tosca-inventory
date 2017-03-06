@@ -21,9 +21,9 @@ title inventory-service
 echo ### Starting inventory-service
 
 set JAVA="%JAVA_HOME%\bin\java"
-set jvm_opts=%jvm_opts% -Ddb_password=inventory
-set jvm_opts=%jvm_opts% -Ddb_user=inventory
-set jvm_opts=%jvm_opts% -Ddb_url=jdbc:mysql://127.0.0.1:3306/inventory
+set jvm_opts=%jvm_opts% -Ddb.password=inventory
+set jvm_opts=%jvm_opts% -Ddb.username=inventory
+set jvm_opts=%jvm_opts% -Ddb.url=jdbc:mysql://127.0.0.1:3306/inventory
 
 
 rem set jvm_opts=-Xms50m -Xmx128m

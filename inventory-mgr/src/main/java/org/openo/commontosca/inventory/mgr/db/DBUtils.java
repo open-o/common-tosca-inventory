@@ -33,7 +33,6 @@ public class DBUtils {
         registered = true;
         Class.forName(MYSQLDRIVER);
       }
-    
       dbi = new DBI(DBConfig.getDbUrl(), DBConfig.getDbUserName(), DBConfig.getDbPassword());
     } catch (ClassNotFoundException e) {
       LOGGER.error("DBI init error:", e);
@@ -41,9 +40,9 @@ public class DBUtils {
   }
 
   public static Handle getHandle() {
-    LOGGER.info("url"+DBConfig.getDbUrl());
-    LOGGER.info("username"+DBConfig.getDbUrl());
-    LOGGER.info("password"+DBConfig.getDbUrl());
+    LOGGER.info("url:" + DBConfig.getDbUrl());
+    LOGGER.info("username:" + DBConfig.getDbUserName());
+    LOGGER.info("password:" + DBConfig.getDbPassword());
     return dbi.open();
   }
 

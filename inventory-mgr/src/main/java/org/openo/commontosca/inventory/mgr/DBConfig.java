@@ -16,14 +16,6 @@
 package org.openo.commontosca.inventory.mgr;
 
 public class DBConfig {
-  private static String dbUrl;
-  private static String dbUserName;
-  private static String dbPassword;
-  static {
-    dbUrl = getProperty("db_url");
-    dbUserName = getProperty("db_user");
-    dbPassword = getProperty("db_password");
-  }
 
   private static String getProperty(String name) {
     String value = System.getenv(name);
@@ -34,17 +26,17 @@ public class DBConfig {
   }
 
   public static String getDbUrl() {
-    return dbUrl;
+    return getProperty("db.url");
   }
 
 
   public static String getDbUserName() {
-    return dbUserName;
+    return getProperty("db.username");
   }
 
 
   public static String getDbPassword() {
-    return dbPassword;
+    return getProperty("db.password");
   }
 
 
