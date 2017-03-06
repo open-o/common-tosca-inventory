@@ -18,16 +18,15 @@ package org.openo.commontosca.inventory.msb;
 import org.openo.commontosca.inventory.config.MicroserviceConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * register service to microservice bus
  */
+
 public class ServiceRegistrer implements Runnable {
   private final ServiceRegisterEntity inventoryEntity = new ServiceRegisterEntity();
   private static final Logger LOG = LoggerFactory.getLogger(ServiceRegistrer.class);
-  @Autowired
-  MicroserviceBusConsumer microserviceBusConsumer;
+  private MicroserviceBusConsumer microserviceBusConsumer = new MicroserviceBusConsumer();
 
   public ServiceRegistrer() {
     initServiceEntity();

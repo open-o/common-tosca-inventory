@@ -15,34 +15,27 @@
  */
 package org.openo.commontosca.inventory.msb;
 
-import java.util.Map;
-
 import org.openo.commontosca.inventory.config.MicroserviceConfig;
 import org.openo.commontosca.inventory.sdk.support.utils.GsonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-
-@Component
 public class MicroserviceBusConsumer {
   private static final Logger LOG = LoggerFactory.getLogger(MicroserviceBusConsumer.class);
-  @Autowired
-  RestTemplate restTemplate;
-
+  RestTemplate restTemplate = new RestTemplate();
   /**
    * @param entity service entity
    * @return register service to msb success return true, else return false.
    */
   public boolean registerService(ServiceRegisterEntity entity) {
-    LOG.info("microservice register body:" + GsonUtils.toJson(entity));
     try {
+      LOG.info("microservice register body:" + GsonUtils.toJson(entity));
+      
       LOG.info(restTemplate
           .postForObject("http://" + MicroserviceConfig.getMsbServerAddr() + ":"
               + MicroserviceConfig.getServiceIp()
-              + "/openoapi/microservices/v1/services?createOrUpdate=false", entity, Map.class)
+              + "/openoapi/microservices/v1/services?createOrUpdate=false", entity, Object.class)
           .toString());
       return true;
     } catch (Exception e) {
