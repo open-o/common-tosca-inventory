@@ -20,9 +20,9 @@ public class DBConfig {
   private static String dbUserName;
   private static String dbPassword;
   static {
-    dbUrl = getProperty("url");
-    dbUserName = getProperty("user");
-    dbPassword = getProperty("password");
+    dbUrl = getProperty("db_url");
+    dbUserName = getProperty("db_user");
+    dbPassword = getProperty("db_password");
   }
 
   private static String getProperty(String name) {
