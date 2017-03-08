@@ -40,9 +40,6 @@ public class DBUtils {
   }
 
   public static Handle getHandle() {
-    LOGGER.info("url:" + DBConfig.getDbUrl());
-    LOGGER.info("username:" + DBConfig.getDbUserName());
-    LOGGER.info("password:" + DBConfig.getDbPassword());
     return dbi.open();
   }
 
