@@ -33,7 +33,7 @@ public class MicroserviceBusConsumer {
       LOG.info("microservice register body:" + GsonUtils.toJson(entity));
       
       LOG.info(restTemplate
-          .postForObject("http://" + MicroserviceConfig.getMsbServerAddr() + ":8086/openoapi/microservices/v1/services?createOrUpdate=false", entity, Object.class)
+          .postForObject("http://" + MicroserviceConfig.getMsbServerAddr() + ":8086/api/microservices/v1/services?createOrUpdate=false", entity, Object.class)
           .toString());
       return true;
     } catch (Exception e) {
