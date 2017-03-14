@@ -32,7 +32,7 @@ public class MicroserviceBusConsumer {
     try {
       LOG.info("microservice register body:" + GsonUtils.toJson(entity));
       LOG.info(restTemplate
-          .postForObject("http://" + MicroserviceConfig.getMsbServerAddr() + ":80/openapi/microservices/v1/services?createOrUpdate=false", entity, Object.class)
+          .postForObject("http://" + MicroserviceConfig.getMsbServerAddr() + "/openoapi/microservices/v1/services?createOrUpdate=false", entity, Object.class)
           .toString());
       LOG.info("microservice register success!");
       return true;

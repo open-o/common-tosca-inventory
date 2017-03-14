@@ -68,6 +68,6 @@ public class ServiceRegistrer implements Runnable {
     inventoryEntity.setVersion("v1");
     inventoryEntity.setUrl("/openoapi/inventory/v1");
     inventoryEntity.setSingleNode(MicroserviceConfig.getServiceIp(), "8203", 0);
-    inventoryEntity.setVisualRange("1");
+    inventoryEntity.setVisualRange("1|0");
   }
 }
