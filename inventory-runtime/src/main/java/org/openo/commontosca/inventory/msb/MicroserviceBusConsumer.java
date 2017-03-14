@@ -31,10 +31,10 @@ public class MicroserviceBusConsumer {
   public boolean registerService(ServiceRegisterEntity entity) {
     try {
       LOG.info("microservice register body:" + GsonUtils.toJson(entity));
-      
       LOG.info(restTemplate
-          .postForObject("http://" + MicroserviceConfig.getMsbServerAddr() + ":8086/api/microservices/v1/services?createOrUpdate=false", entity, Object.class)
+          .postForObject("http://" + MicroserviceConfig.getMsbServerAddr() + ":80/openapi/microservices/v1/services?createOrUpdate=false", entity, Object.class)
           .toString());
+      LOG.info("microservice register success!");
       return true;
     } catch (Exception e) {
       LOG.error("microservice register failed!" + e.getMessage());

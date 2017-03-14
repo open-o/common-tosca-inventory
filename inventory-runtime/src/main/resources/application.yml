@@ -40,7 +40,6 @@ management:
   context-path: /dev-admin
 server:
   server-header: Inventory Server
-  context-path: /inventory
   port:  8203 
   session:
     cookie:
